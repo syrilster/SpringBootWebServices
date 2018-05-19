@@ -14,6 +14,9 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = false, exclude = {"role"})
 public class User {
 
+    protected User() {
+    }
+
     public User(Integer id, String name, Date birthDate) {
         super();
         this.id = id;
