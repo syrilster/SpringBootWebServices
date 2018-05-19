@@ -23,7 +23,10 @@ public class UserResource {
 
     @GetMapping("/users/{id}")
     public User getUserById(@PathVariable int id) {
-        return service.findOne(id);
+        User user = service.findOne(id);
+        if (user == null)
+            throw new UserNotFoundException("User Id: " + id);
+        return user;
     }
 
     @PostMapping("/users")
@@ -35,6 +38,7 @@ public class UserResource {
                 .path("/{id}")
                 .buildAndExpand(savedUser.getId()).toUri();
 
+        //return a response of 201 created
         return ResponseEntity.created(location).build();
     }
 }
