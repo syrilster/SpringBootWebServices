@@ -1,4 +1,4 @@
-package com.springboot.rest.webservice.restfulwebservices;
+package com.springboot.rest.webservice.restfulwebservices.helloworld;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by Syril on 19-05-2018.
  */
 @RestController
-public class HellowWorldController {
+public class HelloWorldController {
 
     @GetMapping(path = "/hello-world")
     public String helloWorld() {

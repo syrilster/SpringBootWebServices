@@ -1,4 +1,4 @@
-package com.springboot.rest.webservice.restfulwebservices;
+package com.springboot.rest.webservice.restfulwebservices.helloworld;
 
 /**
  * Created by Syril on 19-05-2018.
