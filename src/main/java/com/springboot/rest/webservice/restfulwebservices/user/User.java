@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 /**
@@ -13,6 +15,13 @@ import java.util.Date;
 @ToString(callSuper = false, exclude = "role")
 @EqualsAndHashCode(callSuper = false, exclude = {"role"})
 public class User {
+
+    private Integer id;
+    @Size(min = 2, message = "Name should have at least 2 characters")
+    private String name;
+    private String role;
+    @Past
+    private Date birthDate;
 
     protected User() {
     }
@@ -23,17 +32,6 @@ public class User {
         this.name = name;
         this.birthDate = birthDate;
     }
-
-    @Getter
-    @Setter
-    private Integer id;
-    @Getter
-    @Setter
-    private String name;
-    private String role;
-    @Getter
-    @Setter
-    private Date birthDate;
 
     public Integer getId() {
         return id;
