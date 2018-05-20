@@ -1,5 +1,7 @@
 package com.springboot.rest.webservice.restfulwebservices.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -15,6 +17,8 @@ import java.util.Date;
  */
 @ToString(callSuper = false, exclude = "role")
 @EqualsAndHashCode(callSuper = false, exclude = {"role"})
+//To ignore some fields from the response
+//@JsonIgnoreProperties(value = {"name", "role"})
 public class User {
 
     private Integer id;
