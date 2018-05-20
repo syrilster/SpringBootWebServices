@@ -8,6 +8,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.util.Date;
@@ -19,8 +22,11 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = false, exclude = {"role"})
 //To ignore some fields from the response
 //@JsonIgnoreProperties(value = {"name", "role"})
+@Entity
 public class User {
 
+    @Id
+    @GeneratedValue
     private Integer id;
     @Size(min = 2, message = "Name should have at least 2 characters")
     @ApiModelProperty(notes = "Name should have at least 2 characters")
