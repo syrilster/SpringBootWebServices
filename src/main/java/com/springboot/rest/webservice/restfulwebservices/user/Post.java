@@ -1,5 +1,7 @@
 package com.springboot.rest.webservice.restfulwebservices.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -13,6 +15,8 @@ public class Post {
     private Integer id;
     private String description;
     @ManyToOne(fetch = FetchType.LAZY)
+    //We do not need this to be displayed in the result.
+    @JsonIgnore
     private User user;
 
     public Integer getId() {
@@ -29,6 +33,10 @@ public class Post {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

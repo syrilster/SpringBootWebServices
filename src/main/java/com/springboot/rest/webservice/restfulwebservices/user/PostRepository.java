@@ -1,0 +1,9 @@
+package com.springboot.rest.webservice.restfulwebservices.user;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+/**
+ * Created by Syril on 20-05-2018.
+ */
+public interface PostRepository extends JpaRepository<Post, Integer> {
+}
