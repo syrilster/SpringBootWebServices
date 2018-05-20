@@ -17,8 +17,6 @@ import java.util.Optional;
  */
 @RestController
 public class UserJPAResource {
-    @Autowired
-    private UserDAOService service;
 
     @Autowired
     private UserRepository userRepository;
@@ -45,7 +43,7 @@ public class UserJPAResource {
 
     @PostMapping("/jpa/users")
     public ResponseEntity<Object> createUser(@Valid @RequestBody User user) {
-        User savedUser = service.save(user);
+        User savedUser = userRepository.save(user);
 
         //To return the location of the resource in the header.
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
