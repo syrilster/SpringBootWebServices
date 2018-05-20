@@ -1,6 +1,8 @@
 package com.springboot.rest.webservice.restfulwebservices.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -23,11 +25,18 @@ public class UserResource {
     }
 
     @GetMapping("/users/{id}")
-    public User getUserById(@PathVariable int id) {
+    public Resource<User> getUserById(@PathVariable int id) {
         User user = service.findOne(id);
         if (user == null)
             throw new UserNotFoundException("User Id: " + id);
-        return user;
+
+        //Implement the concept of linking to other resources using HATEOAS. Using spring ControllerLinkBuilder.
+        Resource<User> userResource = new Resource<>(user);
+        ControllerLinkBuilder linkTo = ControllerLinkBuilder.linkTo(ControllerLinkBuilder.methodOn(this.getClass())
+                .getAllUsers());
+        userResource.add(linkTo.withRel("all-users"));
+
+        return userResource;
     }
 
     @PostMapping("/users")
